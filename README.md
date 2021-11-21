@@ -68,7 +68,7 @@
 ---
 
 ### 判斷式 ([flow-if.go](./src/flow-if.go))
-- if
+- if-else
 <pre><code>if {布林值}{
     <font color="green">// 布林值為 true 執行此處程式</font>
 } else if {布林值2} {
@@ -76,10 +76,24 @@
 } else {
     <font color="green">// 布林值2為 false 執行此處程式</font>
 }</code></pre>
+- switch
+<pre><code>switch os := runtime.GOOS; os {
+<font color="green">// case 後面不必接常數，資料型態必須與涉及的值相同</font>
+case "darwin":
+    fmt.Println("OS X.")
+case "linux":
+    fmt.Println("Linux.")
+default:
+    // freebsd, openbsd,
+    // plan9, windows...
+    fmt.Printf("%s.\n", os)
+}
+</code></pre>
+
 ---
 
 ### 迴圈 ([flow-for.go](./src/flow-for.go))
-只有一種回圈。
+只有一種迴圈。
 - for
 <pre><code>for {布林值} {
     <font color="green">// 若布林值為 true，執行此處程式</font>
@@ -93,6 +107,14 @@
 - 迴圈中的命令 ([flow-for-cmd.go](./src/flow-for-cmd.go))
     - break
     - continue
+- while，寫法變種
+<pre><code>sum := 1
+for sum < 1000 {
+    sum += sum
+}
+fmt.Println(sum)
+</code></pre>
+
 ---
 
 ### 函式 ([func-basic.go](./src/func-basic.go))([func-return.go](./src/func-return.go))
@@ -210,7 +232,7 @@ func main(){
 
 ---
 
-### <a id="array">陣列 Array [(array.go)](./array.go)
+### <a id="array">陣列 Array [(array.go)](./src/array.go)
 
 - 陣列資料型態
 ```
@@ -249,3 +271,4 @@ for i:=0; i<=len(arr); i++ {
 <font color="green">// -2</font>
 <font color="green">// 0</font>
 </code></pre>
+
